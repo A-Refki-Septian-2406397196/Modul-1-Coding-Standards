@@ -1,5 +1,8 @@
 "# Modul-1-Coding-Standards" 
 
+Refki Septian
+2406397196
+
 ## Reflection 1
 
 Saya menyadari betapa pentingnya clean code untuk kerja sama tim, terutama ketika fitur - fitur kita bergantung dengan orang lain. Mulai dari penamaan variable, sampai ke alur kode sebisa mungkin dibuat sejelas mungkin. Kemudian saya menemukan betapa pentingnya pemahaman github supaya tidak terjadi bentrok antar tim, sebenarnya komunikasi adalah hal yang utama untuk menyelesaikan masalah ketika ada conflict. Oleh karena saya melihat ketika kita terjun ke dunia industri, kerja sama merupakan skill yang sangat dibutuhkan, bukan seseorang yang serba bisa tetapi seseorang yang bisa merangkul semua pihak untuk serba bisa.
