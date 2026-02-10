@@ -68,4 +68,56 @@ class ProductRepositoryTest {
 
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testEditProduct() {
+        Product product = new Product();
+        product.setProductId("eb5589f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Product editedProduct = new Product();
+        editedProduct.setProductId("eb5589f-1c39-460e-8860-71af6af63bd6");
+        editedProduct.setProductName("Sampo Cap Bambang - Edited");
+        editedProduct.setProductQuantity(150);
+        productRepository.edit(editedProduct);
+
+        Product foundProduct = productRepository.findById("eb5589f-1c39-460e-8860-71af6af63bd6");
+        assertEquals("Sampo Cap Bambang - Edited", foundProduct.getProductName());
+        assertEquals(150, foundProduct.getProductQuantity());
+    }
+
+    @Test
+    void testEditProductWithoutChagingAnyField() {
+        Product product = new Product();
+        product.setProductId("eb5589f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Product editedProduct = new Product();
+        editedProduct.setProductId("eb5589f-1c39-460e-8860-71af6af63bd6");
+        editedProduct.setProductName("Sampo Cap Bambang");
+        editedProduct.setProductQuantity(100);
+        productRepository.edit(editedProduct);
+
+        Product foundProduct = productRepository.findById("eb5589f-1c39-460e-8860-71af6af63bd6");
+        assertEquals("Sampo Cap Bambang", foundProduct.getProductName());
+        assertEquals(100, foundProduct.getProductQuantity());
+    }
+
+    @Test
+    void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductId("eb5589f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        productRepository.delete("eb5589f-1c39-460e-8860-71af6af63bd6");
+
+        Product foundProduct = productRepository.findById("eb5589f-1c39-460e-8860-71af6af63bd6");
+        assertNull(foundProduct);
+    }
 }
