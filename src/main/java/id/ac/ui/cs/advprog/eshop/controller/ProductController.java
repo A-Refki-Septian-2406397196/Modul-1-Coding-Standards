@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/product")
@@ -42,7 +41,7 @@ public class ProductController {
     }
 
     @GetMapping("/edit/{productId}")
-    public String editProductPage(@PathVariable UUID productId, Model model) {
+    public String editProductPage(@PathVariable String productId, Model model) {
         Product p = service.findById(productId);
         if (p == null) return "redirect:/product/list";
         model.addAttribute("product", p);
@@ -56,7 +55,7 @@ public class ProductController {
     }
 
     @GetMapping("/delete/{productId}")
-    public String deleteProduct(@PathVariable UUID productId) {
+    public String deleteProduct(@PathVariable String productId) {
         service.delete(productId);
         return "redirect:/product/list";
     }
