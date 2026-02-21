@@ -38,4 +38,9 @@ jobs:
       - name: SonarCloud scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: bash ./gradlew sonar -Dsonar.token=$SONAR_TOKEN
+        run: |
+          bash ./gradlew sonar \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=A-Refki-Septian-2406397196 \
+            -Dsonar.projectKey=A-Refki-Septian-2406397196_Modul-1-Coding-Standards \
+            -Dsonar.token=$SONAR_TOKEN
