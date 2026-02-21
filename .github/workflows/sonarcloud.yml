@@ -24,13 +24,18 @@ jobs:
           java-version: "21"
           cache: "gradle"
       
-      - name: Make Gradle wrapper executable
-        run: chmod +x ./gradlew
+      - name: Prepare Gradle wrapper
+        run: |
+          ls -la
+          ls -la gradlew || true
+          chmod +x gradlew || true
+          sed -i 's/\r$//' gradlew || true
+          bash ./gradlew --version
 
       - name: Test + coverage
-        run: ./gradlew test jacocoTestReport
+        run: bash ./gradlew test jacocoTestReport
 
       - name: SonarCloud scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonar -Dsonar.token=$SONAR_TOKEN
+        run: bash ./gradlew sonar -Dsonar.token=$SONAR_TOKEN
