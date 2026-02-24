@@ -17,7 +17,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @ExtendWith(SeleniumJupiter.class)
 
 
-public class CreateProductFunctionalTest {
+class CreateProductFunctionalTest {
     @LocalServerPort
     private int serverPort;
 
@@ -35,15 +35,13 @@ public class CreateProductFunctionalTest {
     }
 
     @Test
-    void createProduct_successful(ChromeDriver driver) throws Exception {
-        // Exercise
+    void createProduct_successful(ChromeDriver driver) {
         driver.get(baseUrl + "/product/create");
         driver.findElement(By.id("nameInput")).sendKeys("Sampo Cap Bambang");
         driver.findElement(By.id("quantityInput")).sendKeys("100");
         driver.findElement(By.id("createButton")).click();
-        String currentUrl = driver.getCurrentUrl();
 
-        // Verify
+        String currentUrl = driver.getCurrentUrl();
         assertEquals(baseUrl + "/product/list", currentUrl);
     }
 
