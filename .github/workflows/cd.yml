@@ -35,8 +35,10 @@ jobs:
       - name: Deploy to Koyeb
         uses: koyeb/action-git-deploy@v1
         with:
-            app-name: modul-1-coding-standards
-            service-name: modul-1-coding-standards-service
+            app-name: "modul-1-coding-standars"
+            service-name: "modul-1-coding-standars-service"
             service-env: "PORT=8080"
             service-ports: "8080:http"
             service-routes: "/:8080"
+            service-regions: "sin"
+            service-instance-type: "nano"
